@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VR Studio - Build Artists</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
+
+import Lenis from '@studio-freight/lenis'
+
+const lenis = new Lenis()
+
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
+import { motion } from "framer-motion";
+
+const stats = [
+  { label: "Học viên đạt viral", value: "82%" },
+  { label: "Những ca khúc phát hành", value: "120+" },
+  { label: "Views TikTok mỗi tháng", value: "4M+" },
+];
+
+const pains = [
+  "Hát hay nhưng không ai biết",
+  "TikTok không có view",
+  "Không biết xây dựng hình ảnh",
+  "Không có sản phẩm chuyên nghiệp",
+];
+
+const pillars = [
+  {
+    title: "Vocal Training",
+    description: "Kỹ thuật thanh nhạc hiện đại + phong cách biểu diễn cá nhân.",
+  },
+  {
+    title: "Artist Development",
+    description: "Xây dựng thương hiệu, hình ảnh và câu chuyện nghệ sĩ.",
+  },
+  {
+    title: "Music Production",
+    description: "Sản phẩm studio chất lượng, sẵn sàng phát hành platform.",
+  },
+  {
+    title: "Viral Growth",
+    description: "Chiến lược TikTok & Reels để gia tăng reach nhanh.",
+  },
+];
+
+const steps = [
+  {
+    title: "1. Đánh giá bản thân",
+    description: "Phân tích giọng hát, phong cách và định hướng thương hiệu.",
+  },
+  {
+    title: "2. Lên lộ trình",
+    description: "Kế hoạch 1:1 cho giọng hát, sản xuất và viral content.",
+  },
+  {
+    title: "3. Sản phẩm chuyên nghiệp",
+    description: "Thu âm, mix/master và hình ảnh cho chiến dịch ra mắt.",
+  },
+  {
+    title: "4. Viral & chuyển đổi",
+    description: "Tối ưu TikTok + phát triển cộng đồng người hâm mộ.",
+  },
+];
+
+function Header() {
+  return (
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-black/90 backdrop-blur-sm">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <div>
+          <p className="text-xs uppercase tracking-[0.35em] text-red-400">
+            VR Studio
+          </p>
+          <p className="text-sm text-gray-400">
+            Build artists, not just singers
+          </p>
+        </div>
+        <a
+          href="#contact"
+          className="rounded-full bg-red-500 px-5 py-3 text-sm uppercase tracking-[0.2em] transition hover:bg-red-600"
+        >
+          Đăng ký ngay
+        </a>
+      </div>
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(239,68,68,0.14),transparent_35%),linear-gradient(180deg,rgba(15,23,42,0.95),#000)]">
+      <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-red-500/10 to-transparent" />
+      <div className="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-24 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <p className="mb-6 inline-flex rounded-full border border-red-500/30 bg-white/5 px-4 py-2 text-sm uppercase tracking-[0.28em] text-red-300">
+            Chuyển đổi giọng hát thành nghệ sĩ
+          </p>
+          <h1 className="mx-auto max-w-4xl text-5xl font-black tracking-tight text-white md:text-7xl">
+            Từ giọng hát của bạn đến spotlight — chúng tôi xây dựng nghệ sĩ thực thụ.
+          </h1>
+          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-gray-300 md:text-xl">
+            VR Studio giúp Gen Z hiện thực hóa sự nghiệp âm nhạc từ phòng thu đến TikTok, từ cover đến thương hiệu cá nhân.
+          </p>
+
+          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href="#contact"
+              className="inline-flex rounded-full bg-red-500 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-black transition hover:bg-red-600"
+            >
+              Nhận tư vấn miễn phí
+            </a>
+            <a
+              href="#portfolio"
+              className="inline-flex rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm uppercase tracking-[0.18em] text-white transition hover:border-red-500 hover:text-red-300"
+            >
+              Xem kết quả học viên
+            </a>
+          </div>
+        </motion.div>
+
+        <div className="mt-16 grid gap-4 sm:grid-cols-3">
+          {stats.map((item, index) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="rounded-3xl border border-white/10 bg-white/5 px-6 py-8"
+            >
+              <p className="text-3xl font-bold text-white">{item.value}</p>
+              <p className="mt-3 text-sm text-gray-400">{item.label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Problem() {
+  return (
+    <section id="problem" className="py-20 px-6">
+      <div className="mx-auto max-w-5xl text-center">
+        <p className="text-sm uppercase tracking-[0.35em] text-red-400">
+          Bạn đang mắc kẹt ở đâu?
+        </p>
+        <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+          Bạn có giọng hát tốt, nhưng chưa biết cách biến nó thành nghệ sĩ.
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-gray-400">
+          Học viên VR Studio thường đến với:
+        </p>
+      </div>
+
+      <div className="mt-12 grid gap-6 md:grid-cols-2">
+        {pains.map((item, index) => (
+          <motion.div
+            key={item}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: index * 0.08 }}
+            className="rounded-3xl border border-white/10 bg-white/5 p-8 text-left"
+          >
+            <p className="text-lg font-semibold text-white">{item}</p>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Solution() {
+  return (
+    <section className="py-20 px-6 bg-zinc-900">
+      <div className="mx-auto max-w-5xl text-center">
+        <p className="text-sm uppercase tracking-[0.35em] text-red-400">
+          Giải pháp toàn diện
+        </p>
+        <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+          Hệ thống xây dựng nghệ sĩ từ giọng hát đến viral.
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-gray-400">
+          Kết hợp kỹ thuật âm nhạc, sản xuất phòng thu, hình ảnh cá nhân và chiến lược mạng xã hội.
+        </p>
+      </div>
+
+      <div className="mt-12 grid gap-6 md:grid-cols-4">
+        {pillars.map((item, index) => (
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="rounded-3xl border border-white/10 bg-black/60 p-6"
+          >
+            <p className="text-xl font-semibold text-white">{item.title}</p>
+            <p className="mt-3 text-sm leading-7 text-gray-400">
+              {item.description}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Portfolio() {
+  return (
+    <section id="portfolio" className="py-20 px-6 text-center">
+      <div className="mx-auto max-w-5xl">
+        <p className="text-sm uppercase tracking-[0.35em] text-red-400">
+          Kết quả học viên
+        </p>
+        <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+          Những người đã đi từ cover tới spotlight.
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-gray-400">
+          Video thật, sản phẩm thật, lượt xem và follow tăng trưởng nhanh.
+        </p>
+      </div>
+
+      <div className="mt-12 grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
+        <motion.div
+          initial={{ opacity: 0, x: -24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}
+          className="overflow-hidden rounded-[2rem] border border-white/10 bg-black/40"
+        >
+          <iframe
+            className="h-full min-h-[320px] w-full"
+            src="https://www.youtube.com/embed/GPcl-Uc0lXU"
+            title="VR Studio result"
+            allowFullScreen
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}
+          className="grid gap-6"
+        >
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p className="text-lg font-semibold text-white">
+              Chiến lược TikTok cá nhân hóa
+            </p>
+            <p className="mt-4 text-sm leading-7 text-gray-300">
+              Content + nhạc + định dạng viral để tăng tương tác và follow nhanh.
+            </p>
+          </div>
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p className="text-lg font-semibold text-white">
+              Sản phẩm chuẩn release
+            </p>
+            <p className="mt-4 text-sm leading-7 text-gray-300">
+              Thu âm studio, mix/master, cover artwork, và chiến dịch phát hành.
+            </p>
+          </div>
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p className="text-lg font-semibold text-white">
+              Học viên tăng tốc
+            </p>
+            <p className="mt-4 text-sm leading-7 text-gray-300">
+              Từ người mới bắt đầu đến ra mắt bài hát chỉ trong 8 tuần.
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Process() {
+  return (
+    <section className="py-20 px-6 bg-zinc-900">
+      <div className="mx-auto max-w-5xl text-center">
+        <p className="text-sm uppercase tracking-[0.35em] text-red-400">
+          Quy trình chiến thắng
+        </p>
+        <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+          Một lộ trình rõ ràng để bạn trở thành nghệ sĩ.
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-gray-400">
+          Từ định vị giọng hát đến sản phẩm phát hành và chiến dịch viral, mọi bước đều có mục tiêu.
+        </p>
+      </div>
+
+      <div className="mt-12 grid gap-6 md:grid-cols-2">
+        {steps.map((item, index) => (
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: index * 0.08 }}
+            className="rounded-3xl border border-white/10 bg-black/50 p-8"
+          >
+            <p className="text-2xl font-semibold text-red-400">
+              {item.title}
+            </p>
+            <p className="mt-4 text-base leading-7 text-gray-300">
+              {item.description}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function CTA() {
+  return (
+    <section className="py-20 px-6 text-center">
+      <div className="mx-auto max-w-5xl">
+        <p className="text-sm uppercase tracking-[0.35em] text-red-400">
+          Cơ hội hạn chế
+        </p>
+        <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+          Bắt đầu hành trình nghệ sĩ của bạn với VR Studio.
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-gray-400">
+          Chúng tôi chỉ nhận số lượng học viên giới hạn mỗi tháng để đảm bảo tiến độ và chất lượng.
+        </p>
+        <a
+          href="#contact"
+          className="mt-10 inline-flex rounded-full bg-red-500 px-10 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-black transition hover:bg-red-600"
+        >
+          Nhận suất tư vấn
+        </a>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="py-20 px-6 bg-black">
+      <div className="mx-auto max-w-3xl text-center">
+        <p className="text-sm uppercase tracking-[0.35em] text-red-400">
+          Liên hệ
+        </p>
+        <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+          Gửi thông tin, chúng tôi sẽ liên hệ lại trong 24h.
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-gray-400">
+          Chủ đề, mục tiêu và đam mê của bạn sẽ giúp chúng tôi chuẩn bị buổi tư vấn tốt nhất.
+        </p>
+      </div>
+
+      <form className="mx-auto mt-12 grid gap-4 max-w-2xl">
+        <input
+          type="text"
+          name="name"
+          placeholder="Tên nghệ sĩ tương lai của bạn"
+          className="w-full rounded-3xl border border-white/10 bg-white/5 p-4 text-white outline-none transition placeholder:text-gray-500 focus:border-red-500"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email để nhận tư vấn miễn phí"
+          className="w-full rounded-3xl border border-white/10 bg-white/5 p-4 text-white outline-none transition placeholder:text-gray-500 focus:border-red-500"
+        />
+        <textarea
+          name="message"
+          rows="5"
+          placeholder="Kể về đam mê âm nhạc của bạn"
+          className="w-full rounded-3xl border border-white/10 bg-white/5 p-4 text-white outline-none transition placeholder:text-gray-500 focus:border-red-500"
+        />
+        <button className="w-full rounded-3xl bg-red-500 px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-black transition hover:bg-red-600">
+          Bắt đầu hành trình nghệ sĩ ngay
+        </button>
+      </form>
+    </section>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="bg-black text-white font-sans">
+      <Header />
+      <main>
+        <Hero />
+        <Problem />
+        <Solution />
+        <Portfolio />
+        <Process />
+        <CTA />
+        <Contact />
+      </main>
+    </div>
+  );
+}
